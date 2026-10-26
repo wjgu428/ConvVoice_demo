@@ -1,0 +1,152 @@
+:root {
+  --bg: #121417;
+  --fg: #e8eaed;
+  --muted: #9aa0a6;
+  --recon: #2a8f9a;
+  --extend: #c4843a;
+  --line: #3c4043;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 24px 16px 48px;
+  font: 15px/1.5 system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+
+select {
+  margin-left: 8px;
+  max-width: 28rem;
+  padding: 4px 8px;
+  background: #1e2126;
+  color: var(--fg);
+  border: 1px solid var(--line);
+}
+
+#wave {
+  width: 100%;
+  display: block;
+  background: #0c0e10;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: -1px;
+  border-radius: 2px;
+}
+
+.swatch.recon {
+  background: var(--recon);
+}
+
+.swatch.extend {
+  background: var(--extend);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #2b3138;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3a4149;
+}
+
+#clock {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.captions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.utt {
+  max-width: 78%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.utt.speaker-0 {
+  align-self: flex-start;
+}
+
+.utt.speaker-1 {
+  align-self: flex-end;
+}
+
+.utt.recon {
+  background: color-mix(in srgb, var(--recon) 22%, #1a1d21);
+}
+
+.utt.extend {
+  background: color-mix(in srgb, var(--extend) 22%, #1a1d21);
+}
+
+.utt.active {
+  border-color: #fff8;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.word.active {
+  background: #fff3;
+  border-radius: 3px;
+}
+
+.status {
+  color: var(--muted);
+  min-height: 1.2em;
+}

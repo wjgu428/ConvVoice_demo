@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>重建 + 扩展连续播放</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header>
+      <h1>重建 + 扩展</h1>
+      <label>
+        样本
+        <select id="sample"></select>
+      </label>
+    </header>
+    <section class="player">
+      <canvas id="wave" height="88"></canvas>
+      <div class="legend">
+        <span class="swatch recon"></span>重建
+        <span class="swatch extend"></span>扩展
+      </div>
+      <div class="controls">
+        <button id="play" type="button">播放</button>
+        <button id="jump-extend" type="button">跳到扩展</button>
+        <span id="clock">0:00 / 0:00</span>
+      </div>
+    </section>
+    <section id="captions" class="captions"></section>
+    <p id="status" class="status"></p>
+    <script src="app.js"></script>
+  </body>
+</html>
