@@ -31,7 +31,7 @@
   });
   window.addEventListener("resize", () => drawWave(now()));
 
-  fetch("samples.json")
+  fetch("samples.json?v=drama3")
     .then((r) => r.json())
     .then((list) => {
       samples = list;
@@ -43,7 +43,7 @@
       for (const item of list) {
         const opt = document.createElement("option");
         opt.value = item.path;
-        opt.textContent = item.id;
+        opt.textContent = item.id.split("_").pop();
         sampleEl.appendChild(opt);
       }
       loadSample(list[0].path);
