@@ -31,7 +31,7 @@
   });
   window.addEventListener("resize", () => drawWave(now()));
 
-  fetch("samples.json?v=drama3")
+  fetch("samples.json?v=1793329421")
     .then((r) => r.json())
     .then((list) => {
       samples = list;
