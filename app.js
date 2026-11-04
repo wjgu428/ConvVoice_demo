@@ -5,6 +5,10 @@
   const clockEl = document.getElementById("clock");
   const statusEl = document.getElementById("status");
   const captionsEl = document.getElementById("captions");
+  const sourcePlayerEl = document.getElementById("source-player");
+  const playSourceEl = document.getElementById("play-source");
+  const sourceClockEl = document.getElementById("source-clock");
+  const sourceCaptionsEl = document.getElementById("source-captions");
   const canvases = [
     document.getElementById("wave-0"),
     document.getElementById("wave-1"),
@@ -12,25 +16,42 @@
   const contexts = canvases.map((el) => el.getContext("2d"));
   const rulerEl = document.getElementById("ruler");
   const rulerCtx = rulerEl.getContext("2d");
+  const srcCanvases = [
+    document.getElementById("src-wave-0"),
+    document.getElementById("src-wave-1"),
+  ];
+  const srcContexts = srcCanvases.map((el) => el.getContext("2d"));
+  const srcRulerEl = document.getElementById("src-ruler");
+  const srcRulerCtx = srcRulerEl.getContext("2d");
   const WAVE_COLORS = [
     { recon: "#5eead4", extend: "#fb923c" },
     { recon: "#fbbf24", extend: "#fb7185" },
   ];
+  const SOURCE_COLORS = ["#c4b5fd", "#ddd6fe"];
 
   let samples = [];
   let audioCtx = null;
   let mix = null;
+  let origMix = null;
   let reconSeconds = 0;
   let utterances = [];
+  let origUtterances = [];
   let source = null;
+  let origNode = null;
   let playing = false;
+  let origPlaying = false;
   let startedAt = 0;
+  let origStartedAt = 0;
   let offset = 0;
+  let origOffset = 0;
   let peaks = [[], []];
+  let origPeaks = [[], []];
   let raf = 0;
+  let origRaf = 0;
 
   sampleEl.addEventListener("change", () => loadSample(sampleEl.value));
   playEl.addEventListener("click", togglePlay);
+  playSourceEl.addEventListener("click", toggleOrig);
   jumpEl.addEventListener("click", () => seek(reconSeconds));
   [canvases[0], canvases[1], rulerEl].forEach((canvas) => {
     canvas.addEventListener("click", (event) => {
@@ -40,9 +61,20 @@
       seek(x * mix.duration);
     });
   });
-  window.addEventListener("resize", () => drawWave(now()));
+  [srcCanvases[0], srcCanvases[1], srcRulerEl].forEach((canvas) => {
+    canvas.addEventListener("click", (event) => {
+      if (!origMix) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      seekOrig(x * origMix.duration);
+    });
+  });
+  window.addEventListener("resize", () => {
+    drawWave(now());
+    drawOrig(origNow());
+  });
 
-  fetch("samples.json?v=1793765486")
+  fetch("samples.json?v=1793784363")
     .then((r) => r.json())
     .then((list) => {
       samples = list;
@@ -65,29 +97,47 @@
 
   async function loadSample(path) {
     stop(true);
+    stopOrig(true);
     const item = samples.find((s) => s.path === path);
     if (!item) return;
     statusEl.textContent = "加载中…";
     captionsEl.innerHTML = "";
+    sourceCaptionsEl.innerHTML = "";
+    origMix = null;
+    origUtterances = [];
+    sourcePlayerEl.classList.add("hidden");
     try {
       audioCtx = audioCtx || new AudioContext();
-      const [reconT, extT, r0, r1, e0, e1] = await Promise.all([
+      const fetches = [
         fetch(item.reconstruction.transcript).then((r) => r.json()),
         fetch(item.extension.transcript).then((r) => r.json()),
         decode(item.reconstruction.speaker0),
         decode(item.reconstruction.speaker1),
         decode(item.extension.speaker0),
         decode(item.extension.speaker1),
-      ]);
+      ];
+      if (item.source) {
+        fetches.push(decode(item.source.speaker0), decode(item.source.speaker1));
+      }
+      const loaded = await Promise.all(fetches);
+      const [reconT, extT, r0, r1, e0, e1] = loaded;
       const reconMix = stereoMix(r0, r1);
       const extMix = stereoMix(e0, e1);
       reconSeconds = reconMix.duration;
-      mix = concatBuffers(reconMix, extMix);
+      mix = concatMany([reconMix, extMix]);
       peaks = [downsample(mix, 0), downsample(mix, 1)];
-      utterances = applySpokenEnds(
-        mergeUtterances(reconT, extT, reconSeconds),
-        mix
-      );
+      utterances = applySpokenEnds(mergeUtterances(reconT, extT, reconSeconds), mix);
+      if (item.source) {
+        origMix = stereoMix(loaded[6], loaded[7]);
+        origPeaks = [downsample(origMix, 0), downsample(origMix, 1)];
+        origUtterances = (reconT.utterances || []).map(shiftSourceUtt);
+        sourcePlayerEl.classList.remove("hidden");
+        renderSourceCaptions();
+        drawOrig(0);
+        sourceClockEl.textContent =
+          formatTime(0) + " / " + formatTime(origMix.duration);
+        playSourceEl.textContent = "播放原音频";
+      }
       renderCaptions();
       drawWave(0);
       clockEl.textContent = formatTime(0) + " / " + formatTime(mix.duration);
@@ -117,13 +167,18 @@
     dest.set(ch.subarray(0, Math.min(ch.length, length)));
   }
 
-  function concatBuffers(a, b) {
-    const sr = a.sampleRate;
-    const out = audioCtx.createBuffer(2, a.length + b.length, sr);
-    for (let ch = 0; ch < 2; ch++) {
-      const dest = out.getChannelData(ch);
-      dest.set(a.getChannelData(Math.min(ch, a.numberOfChannels - 1)));
-      dest.set(b.getChannelData(Math.min(ch, b.numberOfChannels - 1)), a.length);
+  function concatMany(buffers) {
+    const sr = buffers[0].sampleRate;
+    const length = buffers.reduce((n, buf) => n + buf.length, 0);
+    const out = audioCtx.createBuffer(2, length, sr);
+    let offset = 0;
+    for (const buf of buffers) {
+      for (let ch = 0; ch < 2; ch++) {
+        out
+          .getChannelData(ch)
+          .set(buf.getChannelData(Math.min(ch, buf.numberOfChannels - 1)), offset);
+      }
+      offset += buf.length;
     }
     return out;
   }
@@ -156,6 +211,23 @@
     }
     rows.sort((a, b) => a.t0 - b.t0 || a.speaker_id - b.speaker_id);
     return rows;
+  }
+
+  function shiftSourceUtt(u) {
+    const start = Number.isFinite(u.source_start_ms) ? u.source_start_ms : u.start_ms;
+    const end = Number.isFinite(u.source_end_ms) ? u.source_end_ms : u.end_ms;
+    return {
+      speaker_id: u.speaker_id,
+      text: u.text || "",
+      tagged: u.text_with_audio_tags || u.text || "",
+      type: u.type || null,
+      hook: u.hook || null,
+      truncated_at_char: null,
+      stage: "source",
+      t0: start / 1000,
+      t1: end / 1000,
+      words: [],
+    };
   }
 
   function shiftUtt(u, offsetMs, stage) {
@@ -369,6 +441,28 @@
     });
   }
 
+  function renderSourceCaptions() {
+    sourceCaptionsEl.innerHTML = "";
+    origUtterances.forEach((u, i) => {
+      const el = document.createElement("article");
+      el.className = `utt speaker-${u.speaker_id} source`;
+      el.dataset.index = String(i);
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      const stage = document.createElement("span");
+      stage.className = "pill stage";
+      stage.textContent = "原音频";
+      meta.append(stage);
+      meta.append(document.createTextNode(u.speaker_id === 0 ? "User 0" : "Host 1"));
+      const body = document.createElement("div");
+      body.className = "body";
+      fillCaptionBody(body, u);
+      el.append(meta, body);
+      el.addEventListener("click", () => seekOrig(u.t0));
+      sourceCaptionsEl.appendChild(el);
+    });
+  }
+
   function togglePlay() {
     if (!mix) return;
     if (playing) pause();
@@ -376,6 +470,7 @@
   }
 
   async function play() {
+    pauseOrig();
     if (audioCtx.state === "suspended") await audioCtx.resume();
     if (offset >= mix.duration - 0.02) offset = 0;
     source = audioCtx.createBufferSource();
@@ -434,6 +529,100 @@
       drawWave(offset);
       syncUi(offset);
     }
+  }
+
+  function toggleOrig() {
+    if (!origMix) return;
+    if (origPlaying) pauseOrig();
+    else playOrig();
+  }
+
+  async function playOrig() {
+    pause();
+    if (audioCtx.state === "suspended") await audioCtx.resume();
+    if (origOffset >= origMix.duration - 0.02) origOffset = 0;
+    origNode = audioCtx.createBufferSource();
+    origNode.buffer = origMix;
+    origNode.connect(audioCtx.destination);
+    origNode.onended = () => {
+      if (!origPlaying) return;
+      if (origNow() >= origMix.duration - 0.05) {
+        stopOrig(true);
+        drawOrig(origMix.duration);
+        syncOrig(origMix.duration);
+      }
+    };
+    origNode.start(0, origOffset);
+    origStartedAt = audioCtx.currentTime;
+    origPlaying = true;
+    playSourceEl.textContent = "暂停";
+    tickOrig();
+  }
+
+  function pauseOrig() {
+    origOffset = origNow();
+    origPlaying = false;
+    if (origNode) {
+      try {
+        origNode.stop();
+      } catch (_) {}
+      origNode = null;
+    }
+    playSourceEl.textContent = "播放原音频";
+    cancelAnimationFrame(origRaf);
+    if (origMix) {
+      drawOrig(origOffset);
+      syncOrig(origOffset);
+    }
+  }
+
+  function stopOrig(resetOffset) {
+    origPlaying = false;
+    if (origNode) {
+      try {
+        origNode.stop();
+      } catch (_) {}
+      origNode = null;
+    }
+    if (resetOffset) origOffset = 0;
+    playSourceEl.textContent = "播放原音频";
+    cancelAnimationFrame(origRaf);
+  }
+
+  function seekOrig(seconds) {
+    if (!origMix) return;
+    origOffset = Math.min(Math.max(0, seconds), origMix.duration);
+    if (origPlaying) {
+      stopOrig(false);
+      playOrig();
+    } else {
+      drawOrig(origOffset);
+      syncOrig(origOffset);
+    }
+  }
+
+  function origNow() {
+    if (!origPlaying || !origMix) return origOffset;
+    return Math.min(origMix.duration, origOffset + (audioCtx.currentTime - origStartedAt));
+  }
+
+  function tickOrig() {
+    const t = origNow();
+    drawOrig(t);
+    syncOrig(t);
+    if (origPlaying) origRaf = requestAnimationFrame(tickOrig);
+  }
+
+  function syncOrig(t) {
+    if (!origMix) return;
+    sourceClockEl.textContent = formatTime(t) + " / " + formatTime(origMix.duration);
+    let active = -1;
+    for (let i = 0; i < origUtterances.length; i++) {
+      if (t >= origUtterances[i].t0 && t < origUtterances[i].t1) active = i;
+    }
+    sourceCaptionsEl.querySelectorAll(".utt").forEach((el, i) => {
+      el.classList.toggle("active", i === active);
+    });
   }
 
   function now() {
@@ -536,6 +725,92 @@
     ctx2d.lineTo(playX, 7);
     ctx2d.closePath();
     ctx2d.fill();
+  }
+
+  function drawOrig(t) {
+    srcCanvases.forEach((canvas, speaker) => {
+      drawOrigWave(
+        canvas,
+        srcContexts[speaker],
+        origPeaks[speaker] || [],
+        t,
+        SOURCE_COLORS[speaker]
+      );
+    });
+    drawOrigRuler(t);
+  }
+
+  function drawOrigWave(canvas, ctx2d, series, t, color) {
+    const dpr = window.devicePixelRatio || 1;
+    const width = canvas.clientWidth || 800;
+    const height = 72;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx2d.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx2d.clearRect(0, 0, width, height);
+    if (!origMix || !series.length) return;
+    const mid = height / 2;
+    const played = origMix.duration ? t / origMix.duration : 0;
+    ctx2d.fillStyle = "rgba(167, 139, 250, 0.10)";
+    ctx2d.fillRect(0, 0, width, height);
+    const n = series.length;
+    const bar = Math.max(1, width / n - 0.45);
+    for (let i = 0; i < n; i++) {
+      const x0 = (i / n) * width;
+      const h = Math.max(1.4, series[i] * (mid - 8));
+      ctx2d.globalAlpha = i / n <= played ? 0.95 : 0.38;
+      ctx2d.fillStyle = color;
+      ctx2d.fillRect(x0, mid - h, bar, h * 2);
+    }
+    ctx2d.globalAlpha = 1;
+    const playX = played * width;
+    ctx2d.strokeStyle = "#fafaf9";
+    ctx2d.lineWidth = 1.4;
+    ctx2d.beginPath();
+    ctx2d.moveTo(playX, 0);
+    ctx2d.lineTo(playX, height);
+    ctx2d.stroke();
+    ctx2d.fillStyle = "#fafaf9";
+    ctx2d.beginPath();
+    ctx2d.moveTo(playX - 4.5, 0);
+    ctx2d.lineTo(playX + 4.5, 0);
+    ctx2d.lineTo(playX, 7);
+    ctx2d.closePath();
+    ctx2d.fill();
+  }
+
+  function drawOrigRuler(t) {
+    const dpr = window.devicePixelRatio || 1;
+    const width = srcRulerEl.clientWidth || 800;
+    const height = 28;
+    srcRulerEl.width = Math.floor(width * dpr);
+    srcRulerEl.height = Math.floor(height * dpr);
+    srcRulerCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    srcRulerCtx.clearRect(0, 0, width, height);
+    if (!origMix) return;
+    const dur = origMix.duration;
+    const step = niceStep(dur, width);
+    srcRulerCtx.font = "10px ui-monospace, SFMono-Regular, Menlo, monospace";
+    for (let s = 0; s <= dur + 0.001; s += step) {
+      const x = (s / dur) * width;
+      srcRulerCtx.strokeStyle = "rgba(255,255,255,0.2)";
+      srcRulerCtx.beginPath();
+      srcRulerCtx.moveTo(x + 0.5, 0);
+      srcRulerCtx.lineTo(x + 0.5, 7);
+      srcRulerCtx.stroke();
+      if (s > 0.05) {
+        srcRulerCtx.fillStyle = "#a8a29e";
+        srcRulerCtx.fillText(formatTime(s), x + 4, 20);
+      }
+    }
+    srcRulerCtx.fillStyle = "#c4b5fd";
+    srcRulerCtx.fillText("原音频", 4, 20);
+    const playX = (t / dur) * width;
+    srcRulerCtx.strokeStyle = "#fafaf9";
+    srcRulerCtx.beginPath();
+    srcRulerCtx.moveTo(playX + 0.5, 0);
+    srcRulerCtx.lineTo(playX + 0.5, height);
+    srcRulerCtx.stroke();
   }
 
   function drawRuler(t) {

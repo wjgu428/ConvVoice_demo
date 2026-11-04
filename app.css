@@ -4,6 +4,7 @@
   --ink: #1c1917;
   --muted: #78716c;
   --line: #e4d9cc;
+  --source: #6d28d9;
   --recon: #0f766e;
   --extend: #c2410c;
   --user: #0f766e;
@@ -93,6 +94,55 @@ select {
   overflow: hidden;
 }
 
+.player + .player {
+  margin-top: 18px;
+}
+
+.player-head {
+  margin: 0;
+  padding: 14px 16px 0;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.source-player .player-head {
+  color: var(--source);
+}
+
+.source-player.hidden {
+  display: none;
+}
+
+.source-player .waves {
+  background:
+    radial-gradient(80% 120% at 10% 0%, rgba(109, 40, 217, 0.22), transparent 55%),
+    var(--well);
+}
+
+#src-wave-0,
+#src-wave-1,
+#src-ruler {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+#src-wave-0,
+#src-wave-1 {
+  height: 72px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.source-captions {
+  margin: 0;
+  padding: 8px 14px 16px;
+  max-height: 280px;
+  overflow: auto;
+}
+
 .waves {
   padding: 14px 14px 8px;
   background:
@@ -130,7 +180,8 @@ select {
   background: rgba(255, 255, 255, 0.03);
 }
 
-#ruler {
+#ruler,
+#src-ruler {
   height: 28px;
   margin-left: 82px;
   width: calc(100% - 82px);
@@ -162,6 +213,10 @@ select {
   margin-right: 6px;
   vertical-align: -1px;
   border-radius: 99px;
+}
+
+.swatch.source {
+  background: var(--source);
 }
 
 .swatch.recon {
@@ -265,6 +320,11 @@ button.primary:hover {
   border-bottom-right-radius: 5px;
 }
 
+.utt.source {
+  background: color-mix(in srgb, var(--source) 9%, #fff);
+  border-color: color-mix(in srgb, var(--source) 18%, #fff);
+}
+
 .utt.recon {
   background: color-mix(in srgb, var(--recon) 11%, #fff);
   border-color: color-mix(in srgb, var(--recon) 20%, #fff);
@@ -305,6 +365,11 @@ button.primary:hover {
   border-radius: 999px;
   font-size: 10px;
   letter-spacing: 0.04em;
+}
+
+.utt.source .pill.stage {
+  background: color-mix(in srgb, var(--source) 16%, #fff);
+  color: var(--source);
 }
 
 .utt.recon .pill.stage {
@@ -398,7 +463,8 @@ button.primary:hover {
     grid-template-columns: 56px 1fr;
   }
 
-  #ruler {
+  #ruler,
+  #src-ruler {
     margin-left: 66px;
     width: calc(100% - 66px);
   }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>重建 + 扩展（Drama 3）</title>
     <meta http-equiv="Cache-Control" content="no-cache" />
-    <link rel="stylesheet" href="app.css?v=heard" />
+    <link rel="stylesheet" href="app.css?v=1793784363" />
   </head>
   <body>
     <div class="page">
@@ -20,7 +20,32 @@
           <select id="sample"></select>
         </label>
       </header>
+      <section id="source-player" class="player card source-player hidden">
+        <p class="player-head">原音频</p>
+        <div class="waves">
+          <div class="wave-row">
+            <span class="wave-label">User 0</span>
+            <canvas id="src-wave-0" height="72"></canvas>
+          </div>
+          <div class="wave-row">
+            <span class="wave-label">Host 1</span>
+            <canvas id="src-wave-1" height="72"></canvas>
+          </div>
+          <canvas id="src-ruler" height="28"></canvas>
+        </div>
+        <div class="bar">
+          <div class="legend">
+            <span class="swatch source"></span>源分离轨
+          </div>
+          <div class="controls">
+            <button id="play-source" type="button">播放原音频</button>
+            <span id="source-clock">0:00 / 0:00</span>
+          </div>
+        </div>
+        <section id="source-captions" class="captions source-captions"></section>
+      </section>
       <section class="player card">
+        <p class="player-head">重建 + 扩展</p>
         <div class="waves">
           <div class="wave-row">
             <span class="wave-label">User 0</span>
@@ -50,6 +75,6 @@
       <section id="captions" class="captions"></section>
       <p id="status" class="status"></p>
     </div>
-    <script src="app.js?v=heard"></script>
+    <script src="app.js?v=1793784363"></script>
   </body>
 </html>
