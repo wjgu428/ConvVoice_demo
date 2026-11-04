@@ -5,30 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>重建 + 扩展（Drama 3）</title>
     <meta http-equiv="Cache-Control" content="no-cache" />
-    <link rel="stylesheet" href="app.css?v=1793329421" />
+    <link rel="stylesheet" href="app.css?v=heard" />
   </head>
   <body>
-    <header>
-      <h1>重建 + 扩展（Drama 3）</h1>
-      <label>
-        样本
-        <select id="sample"></select>
-      </label>
-    </header>
-    <section class="player">
-      <canvas id="wave" height="88"></canvas>
-      <div class="legend">
-        <span class="swatch recon"></span>重建
-        <span class="swatch extend"></span>扩展
-      </div>
-      <div class="controls">
-        <button id="play" type="button">播放</button>
-        <button id="jump-extend" type="button">跳到扩展</button>
-        <span id="clock">0:00 / 0:00</span>
-      </div>
-    </section>
-    <section id="captions" class="captions"></section>
-    <p id="status" class="status"></p>
-    <script src="app.js?v=1793329421"></script>
+    <div class="page">
+      <header>
+        <div class="brand">
+          <p class="kicker">ConversationalVoice</p>
+          <h1>重建 + 扩展</h1>
+          <p class="sub">User 0 · Host 1 · 悬停台词查看 audio tag</p>
+        </div>
+        <label class="picker">
+          样本
+          <select id="sample"></select>
+        </label>
+      </header>
+      <section class="player card">
+        <div class="waves">
+          <div class="wave-row">
+            <span class="wave-label">User 0</span>
+            <canvas id="wave-0" height="88"></canvas>
+          </div>
+          <div class="wave-row">
+            <span class="wave-label">Host 1</span>
+            <canvas id="wave-1" height="88"></canvas>
+          </div>
+          <canvas id="ruler" height="28"></canvas>
+        </div>
+        <div class="bar">
+          <div class="legend">
+            <span class="swatch recon"></span>重建
+            <span class="swatch extend"></span>扩展
+            <span class="chip incomplete">incomplete</span>
+            <span class="chip interrupt">interrupt</span>
+            <span class="chip backchannel">backchannel</span>
+          </div>
+          <div class="controls">
+            <button id="play" type="button" class="primary">播放</button>
+            <button id="jump-extend" type="button">跳到扩展</button>
+            <span id="clock">0:00 / 0:00</span>
+          </div>
+        </div>
+      </section>
+      <section id="captions" class="captions"></section>
+      <p id="status" class="status"></p>
+    </div>
+    <script src="app.js?v=heard"></script>
   </body>
 </html>
