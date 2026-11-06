@@ -1,92 +1,362 @@
 [
   {
     "id": "xiaoyuzhoufm_part0_2024082500600_0_00000001",
-    "path": "2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001",
     "reconstruction": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/reconstruction/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/reconstruction/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/reconstruction/speaker-1.wav"
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000001.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-1.wav"
     },
     "extension": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/dialogue-extension/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/dialogue-extension/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/dialogue-extension/speaker-1.wav"
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000001.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-1.wav"
     },
     "source": {
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/source/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000001/source/speaker-1.wav"
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000001/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000002",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000002",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000002.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000002.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000002/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000005",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000005",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000005.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000005.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000005/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000006",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000006",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000006.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000006.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000006/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000013",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000013",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000013.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000013.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000013/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000014",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000014",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000014.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000014.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000014/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000017",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000017",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000017.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000017.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000017/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000022",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000022",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000022.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000022.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000022/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000024",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000024",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000024.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000024.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000024/speaker-1.wav"
     }
   },
   {
     "id": "xiaoyuzhoufm_part0_2024082500600_0_00000025",
-    "path": "2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025",
     "reconstruction": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/reconstruction/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/reconstruction/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/reconstruction/speaker-1.wav"
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000025.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-1.wav"
     },
     "extension": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/dialogue-extension/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/dialogue-extension/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/dialogue-extension/speaker-1.wav"
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000025.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-1.wav"
     },
     "source": {
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/source/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000025/source/speaker-1.wav"
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000025/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000029",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000029",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000029.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000029.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000029/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000030",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000030",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000030.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000030.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000030/speaker-1.wav"
     }
   },
   {
     "id": "xiaoyuzhoufm_part0_2024082500600_0_00000031",
-    "path": "2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031",
     "reconstruction": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/reconstruction/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/reconstruction/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/reconstruction/speaker-1.wav"
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000031.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-1.wav"
     },
     "extension": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/dialogue-extension/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/dialogue-extension/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/dialogue-extension/speaker-1.wav"
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000031.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-1.wav"
     },
     "source": {
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/source/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000031/source/speaker-1.wav"
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000031/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000032",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000032",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000032.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000032.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000032/speaker-1.wav"
     }
   },
   {
     "id": "xiaoyuzhoufm_part0_2024082500600_0_00000035",
-    "path": "2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035",
     "reconstruction": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/reconstruction/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/reconstruction/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/reconstruction/speaker-1.wav"
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000035.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-1.wav"
     },
     "extension": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/dialogue-extension/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/dialogue-extension/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/dialogue-extension/speaker-1.wav"
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000035.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-1.wav"
     },
     "source": {
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/source/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000035/source/speaker-1.wav"
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000035/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000036",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000036",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000036.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000036.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000036/speaker-1.wav"
     }
   },
   {
     "id": "xiaoyuzhoufm_part0_2024082500600_0_00000037",
-    "path": "2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037",
     "reconstruction": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/reconstruction/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/reconstruction/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/reconstruction/speaker-1.wav"
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000037.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-1.wav"
     },
     "extension": {
-      "transcript": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/dialogue-extension/transcript.json",
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/dialogue-extension/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/dialogue-extension/speaker-1.wav"
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000037.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-1.wav"
     },
     "source": {
-      "speaker0": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/source/speaker-0.wav",
-      "speaker1": "data/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000037/source/speaker-1.wav"
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000037/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000038",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000038",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000038.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000038.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000038/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000042",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000042",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000042.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000042.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000042/speaker-1.wav"
+    }
+  },
+  {
+    "id": "xiaoyuzhoufm_part0_2024082500600_0_00000050",
+    "path": "xiaoyuzhoufm_part0/2024082500600_0/xiaoyuzhoufm_part0_2024082500600_0_00000050",
+    "reconstruction": {
+      "transcript": "data/reconstruct_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000050.json",
+      "speaker0": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-0.wav",
+      "speaker1": "data/reconstruct_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-1.wav"
+    },
+    "extension": {
+      "transcript": "data/extend_transcript/xiaoyuzhoufm_part0_2024082500600_0_00000050.json",
+      "speaker0": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-0.wav",
+      "speaker1": "data/extend_tracks/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-1.wav"
+    },
+    "source": {
+      "speaker0": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-0.wav",
+      "speaker1": "data/source/xiaoyuzhoufm_part0_2024082500600_0_00000050/speaker-1.wav"
     }
   }
 ]

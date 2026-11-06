@@ -74,13 +74,13 @@
     drawOrig(origNow());
   });
 
-  fetch("samples.json?v=1793784363")
+  fetch("samples.json?v=1793928720")
     .then((r) => r.json())
     .then((list) => {
       samples = list;
       sampleEl.innerHTML = "";
       if (!list.length) {
-        statusEl.textContent = "没有 status=ok 且重建+扩展齐全的样本";
+        statusEl.textContent = "没有 success.log 且重建+扩展齐全的样本";
         return;
       }
       for (const item of list) {
@@ -207,7 +207,7 @@
       rows.push(shiftUtt(u, 0, "recon"));
     }
     for (const u of extT.utterances || []) {
-      rows.push(shiftUtt(u, offsetMs, "extend"));
+      rows.push(...expandCueUtt(shiftUtt(u, offsetMs, "extend")));
     }
     rows.sort((a, b) => a.t0 - b.t0 || a.speaker_id - b.speaker_id);
     return rows;
@@ -246,12 +246,62 @@
       tagged: u.text_with_audio_tags || u.text || "",
       type: u.type || null,
       hook: u.hook || null,
+      interrupt_form: u.interrupt_form || null,
+      cue: u.cue || null,
       truncated_at_char: u.truncated_at_char,
       stage,
       t0: (u.start_ms + offsetMs) / 1000,
       t1: (u.end_ms + offsetMs) / 1000,
       words,
     };
+  }
+
+  function expandCueUtt(u) {
+    const cue = (u.cue || "").trim();
+    if (u.type !== "interrupt" || u.interrupt_form !== "cue" || !cue) return [u];
+    const prefix = cue + "，";
+    const tagged = u.tagged || "";
+    const last = u.words[u.words.length - 1];
+    const faOnJoined =
+      last && Number.isInteger(last.end) && last.end > tagged.length;
+    if (!faOnJoined && !tagged.startsWith(prefix) && !(u.text || "").startsWith(prefix)) {
+      const cueDur = Math.min(0.35, Math.max(0.12, (u.t1 - u.t0) * 0.12));
+      return [
+        { ...u, text: cue, tagged: cue, words: [], t1: u.t0 + cueDur, cueLine: true },
+        { ...u, t0: u.t0 + cueDur },
+      ];
+    }
+    const cueWords = [];
+    const textWords = [];
+    for (const w of u.words) {
+      const start = Number.isInteger(w.start) ? w.start : 0;
+      const end = Number.isInteger(w.end) ? w.end : start;
+      if (end <= prefix.length) {
+        cueWords.push({ ...w });
+      } else if (start >= prefix.length) {
+        textWords.push({
+          ...w,
+          start: start - prefix.length,
+          end: end - prefix.length,
+        });
+      } else {
+        const span = Math.max(1, end - start);
+        const mid = w.t0 + ((w.t1 - w.t0) * (prefix.length - start)) / span;
+        cueWords.push({ ...w, end: prefix.length, t1: mid });
+        textWords.push({
+          ...w,
+          start: 0,
+          end: end - prefix.length,
+          t0: mid,
+        });
+      }
+    }
+    const cueT1 = cueWords.length ? cueWords[cueWords.length - 1].t1 : u.t0;
+    const textT0 = textWords.length ? textWords[0].t0 : cueT1;
+    return [
+      { ...u, text: cue, tagged: cue, words: cueWords, t1: Math.max(cueT1, u.t0), cueLine: true },
+      { ...u, words: textWords, t0: textT0 },
+    ];
   }
 
   function hostInterrupted(rows, index) {
